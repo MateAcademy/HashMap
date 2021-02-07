@@ -59,8 +59,10 @@ public class MyMap<K, V> implements Map<K, V> {
             objects = new Node[newCapacity];
             for(Node<K, V> node: tempObjects) {
                 if (node !=null) {
-                    putNode(node);
                     Node<K, V> tempNode = node.next;
+                    node.next = null;
+                    putNode(node);
+
 
                     while (tempNode != null) {
                         putNode(tempNode);
